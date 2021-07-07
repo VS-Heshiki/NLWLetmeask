@@ -78,7 +78,6 @@ export function Room() {
 
     if(!user) {
       toast.error("This didn't work.");
-      <Toaster />
     }
 
     const question = {
@@ -98,6 +97,7 @@ export function Room() {
 
   return(
     <div id="page-room">
+      <div><Toaster/></div>
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />

@@ -9,6 +9,7 @@ import '../styles/auth.scss'
 import { Button } from '../components/Button'
 import { FormEvent, useState } from 'react'
 import { database } from '../services/firebase'
+import toast, { Toaster } from 'react-hot-toast'
 
 export function Home() {
   const history = useHistory();
@@ -33,7 +34,7 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert('Room does not exists.');
+      toast.error("This room not exist.")
       return;
     }
 
@@ -43,6 +44,7 @@ export function Home() {
 
   return (
     <div id="page-auth">
+      <div><Toaster/></div>
       <aside>
         <img src={illustrationImg} alt="Ilustração inicial" />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
